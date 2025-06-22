@@ -1,0 +1,752 @@
+
+using System;
+
+
+namespace Banking_System
+{
+    internal class Controlstructure
+    {
+        static void Main(String[] args)
+        {
+            {
+                //Task 1: Conditional Statements
+                //In a bank, you have been given the task is to create a program that checks if a customer is eligible for a loan based on their credit score and income.The eligibility criteria are as follows:
+                //
+                //Credit Score must be above 700.
+                //
+                //Annual Income must be at least $50, 000.
+                //Tasks:
+                //1.Write a program that takes the customer's credit score and annual income as input.
+                //2.Use conditional statements(if-else) to determine if the customer is eligible for a loan.
+                //3.Display an appropriate message based on eligibility.
+                //Console.Write("Enter your Credit Score");
+                int creditScore = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter your Annual Income  ");
+                double annualIncome = Convert.ToDouble(Console.ReadLine());
+
+
+                if (creditScore > 700 && annualIncome >= 50000)
+                {
+                    Console.WriteLine("You are eligible for a loan");
+                }
+                else
+                {
+                    Console.WriteLine("you are not eligible for a loan");
+                    if (creditScore <= 700)
+                    {
+                        Console.WriteLine("Credit Score must be above 700");
+                    }
+                    if (annualIncome < 50000)
+                    {
+                        Console.WriteLine(" Annual Income must be at least 50,000");
+                    }
+                }
+
+                //Task 2: Nested Conditional Statements
+                //        Create a program that simulates an ATM transaction
+                //       .Display options such as "Check Balance," "Withdraw," "Deposit,".
+                //                    Ask the user to enter their current balance and the
+                //                    amount they want to withdraw or deposit.Implement checks to ensure
+                //                    that the withdrawal amount is not greater than the available balance
+                //                    and that the withdrawal amount is in 
+                //                    multiples of 100 or 500.Display appropriate messages for success or failure.
+
+                double balance;
+
+                Console.Write("Enter your current balance: ");
+                balance = Convert.ToDouble(Console.ReadLine());
+
+
+                Console.WriteLine("1 Check Balance");
+                Console.WriteLine("2 Withdraw");
+                Console.WriteLine("3 Deposit");
+                Console.Write("Choose an option (1-3): ");
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+                if (choice == 1)
+                {
+                    Console.WriteLine($" current balance is: ${balance}");
+                }
+                else if (choice == 2)
+                {
+                    Console.Write("\nEnter amount to withdraw: $");
+                    double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+
+                    if (withdrawAmount <= balance)
+                    {
+                        if (withdrawAmount % 100 == 0 || withdrawAmount % 500 == 0)
+                        {
+                            balance -= withdrawAmount;
+                            Console.WriteLine($"withdrawal done new balance: ${balance}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("withdrawal amount must be in  100 or 500.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient balance for withdrawal.");
+                    }
+                }
+                else if (choice == 3)
+                {
+                    Console.Write("Enter amount to deposit: ");
+                    double depositAmount = Convert.ToDouble(Console.ReadLine());
+
+                    if (depositAmount > 0)
+                    {
+                        balance += depositAmount;
+                        Console.WriteLine($" balance: ${balance}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("deposit amount must be positive.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("invalid option.");
+//                }
+//                Task 3: Loop Structures
+//You are responsible for calculating compound interest on savings accounts for bank customers. You need to calculate the future balance for each customer's savings account after a certain number of years.
+//Tasks:
+//1.Create a program that calculates the future balance of a savings account.
+//2.Use a loop structure(e.g., for loop) to calculate the balance for multiple customers.
+//3.Prompt the user to enter the initial balance, annual interest rate, and the number of years.
+//4.Calculate the future balance using the formula: future_balance = initial_balance * (1 + annual_interest_rate / 100) ^ years.
+//5.Display the future balance for each customer.
+
+                Console.Write("Enter the number of customers: ");
+                int customerCount = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 1; i <= customerCount; i++)
+                {
+
+                    Console.Write("Enter initial balance");
+                    double initialBalance = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("Enter annual interest rate : ");
+                    double annualRate = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("Enter number of years: ");
+                    int years = Convert.ToInt32(Console.ReadLine());
+
+                    double futureBalance = initialBalance * Math.Pow(1 + annualRate / 100, years);
+
+                    Console.WriteLine($"Future balance : {futureBalance}");
+                }
+                Console.ReadLine();
+            }
+        }
+    }
+}
+
+==============================================================================================================================
+using System;
+using System.Collections.Generic;
+
+
+namespace Banking_System
+{
+    //Task 7: Class & Object
+    //1. Create a `Customer` class with the following confidential attributes:
+    class Customer
+    {
+        public int CustomerID;
+        public string FirstName;
+        public string LastName;
+        public string EmailAddress;
+        public string PhoneNumber;
+        public string Address;
+        public Customer()
+        {
+            Console.WriteLine("Customer default customer invoked");
+        }
+        public Customer(int customerID, string firstName, string lastName, string emailAddress, string phoneNumber, string address)
+        {
+            CustomerID = customerID;
+            FirstName = firstName;
+            LastName = lastName;
+            EmailAddress = emailAddress;
+            PhoneNumber = phoneNumber;
+            Address = address;
+        }
+        public void SetCustomerID(int id)
+        {
+            CustomerID = id;
+        }
+        public void SetFirstName(string firstName)
+        {
+            FirstName = firstName;
+        }
+        public void SetLastName(string lastName)
+        {
+            LastName = lastName;
+        }
+        public void SetemailAddress(string emailaddress)
+        {
+            EmailAddress = emailaddress;
+        }
+        public void SetPhonenumber(string phonenumber)
+        {
+            PhoneNumber = phonenumber;
+        }
+        public void SetAddress(string address)
+        {
+            Address = address;
+        }
+        public int GetCustomerID()
+        {
+            return CustomerID;
+        }
+        public string GetFirstName()
+        {
+            return FirstName;
+        }
+        public string GetLastName()
+        {
+            return LastName;
+        }
+        public string GetemailAddress()
+        {
+            return EmailAddress;
+        }
+        public string GetPhonenumber()
+        {
+            return PhoneNumber;
+        }
+        public string GetAddress()
+        {
+            return Address;
+        }
+        public void DisplayCustomerInfo()
+        {
+            Console.WriteLine("Customer ID: " + CustomerID);
+            Console.WriteLine("Customer Name: " + FirstName);
+            Console.WriteLine("Customer Email: " + LastName);
+            Console.WriteLine("Email:" + EmailAddress);
+            Console.WriteLine("phone number:" + PhoneNumber);
+            Console.WriteLine("Address:" + Address);
+
+        }
+    }
+    //2. Create an `Account` class with the following confidential attributes:
+    public class Account
+    {
+        public string AccountNumber;
+        public string AccountType;
+        public float AccountBalance;
+
+        public Account()
+        {
+
+        }
+        public Account(string accountnumber, string accounttype, float accountbalance)
+        {
+            AccountNumber = accountnumber;
+            AccountType = accounttype;
+            AccountBalance = accountbalance;
+        }
+
+        public void SetAccountNumber(string accountnumber)
+        {
+            AccountNumber = accountnumber;
+        }
+        public void SetAccountType(string accounttype)
+        {
+            AccountType = accounttype;
+        }
+        public void SetAccountBalance(float accountbalance)
+        {
+            AccountBalance = accountbalance;
+        }
+
+        public string GetAccountnumber()
+        {
+            return AccountNumber;
+        }
+        public string GetAccountType()
+        {
+            return AccountType;
+
+        }
+        public float GetAccountBalance()
+        {
+            return AccountBalance;
+        }
+        public void DisplayAccountInfo()
+        {
+            Console.WriteLine("Displaying Account Details");
+            Console.WriteLine("Account Number: " + AccountNumber);
+            Console.WriteLine("Account Type: " + AccountType);
+            Console.WriteLine("Account Balance: " + AccountBalance);
+
+
+        }
+//        Task 8: Inheritance and polymorphism
+//        1. Overload the deposit and withdraw methods in Account class as mentioned below.
+//deposit(amount: float): Deposit the specified amount into the account.
+//
+//withdraw(amount: float) : Withdraw the specified amount from the account.withdraw amount only if there is sufficient fund else display insufficient balance.
+//
+//deposit(amount: int) : Deposit the specified amount into the account.
+//
+//withdraw(amount: int) : Withdraw the specified amount from the account.withdraw amount only if there is sufficient fund else display insufficient balance.
+//
+//deposit(amount: double) : Deposit the specified amount into the account.
+//
+//withdraw(amount: double) : Withdraw the specified amount from the account.withdraw amount only if there is sufficient fund else display insufficient balance.
+
+        public void deposit(float amount)
+        {
+            AccountBalance += amount;
+        }
+        public void deposit(int amount)
+        {
+            AccountBalance += amount;
+        }
+        public void deposit(double amount)
+        {
+            AccountBalance += (float)amount;
+        }
+
+
+        public virtual void withdraw(float amount)
+        {
+            if (amount > AccountBalance)
+            {
+                Console.WriteLine("Insufficient Balance");
+            }
+            else
+            {
+                AccountBalance -= amount;
+            }
+
+        }
+        public void withdraw(int amount)
+        {
+            if (amount > AccountBalance)
+            {
+                Console.WriteLine("Insufficient Balance");
+            }
+            else
+            {
+                AccountBalance -= amount;
+            }
+
+        }
+        public void withdraw(double amount)
+        {
+            if (amount > AccountBalance)
+            {
+                Console.WriteLine("Insufficient Balance");
+            }
+            else
+            {
+                AccountBalance -= (float)amount;
+            }
+
+        }
+        public virtual void calculate_interest()
+        {
+            Console.WriteLine("Interest Amount:" + AccountBalance * 0.045);
+        }
+    }
+//    2. Create Subclasses for Specific Account Types
+//
+
+
+//Create subclasses for specific account types(e.g., `SavingsAccount`, `CurrentAccount`) that inherit from the `Account` class.
+//o SavingsAccount: A savings account that includes an additional attribute for interest rate. override the calculate_interest() from Account class method to calculate interest based on the balance and interest rate.
+//o CurrentAccount: A current account that includes an additional attribute overdraftLimit.A current account with no interest. Implement the withdraw() method to allow overdraft up to a certain limit (configure a constant for the overdraft limit).
+
+
+    public class SavingsAccount : Account
+    {
+        float intrestRate = 0.6f;
+
+        public SavingsAccount(string accountnumber, string accountype, float balance)
+        {
+            AccountNumber = accountnumber;
+            AccountType = accountype;
+            AccountBalance = balance;
+        }
+        public override void calculate_interest()
+        {
+            float intrest = intrestRate * AccountBalance;
+            Console.WriteLine("Interest:" + intrest);
+            AccountBalance += intrest;
+        }
+
+
+    }
+    public class CurrentAccount : Account
+    {
+        float overdraftLimit = 2000;
+        public CurrentAccount(string accountnumber, string accountype, float balance)
+        {
+            AccountNumber = accountnumber;
+            AccountType = accountype;
+            AccountBalance = balance;
+        }
+        public override void withdraw(float amount)
+        {
+            if (AccountBalance - amount > -overdraftLimit)
+            {
+                AccountBalance -= amount;
+            }
+        }
+        public override void calculate_interest()
+        {
+            Console.WriteLine("Not availabele for Current Account");
+        }
+    }
+
+    //Create a Bank class to represent the banking system.Perform the following operation in main method:
+    class Bank
+    {
+        static void Main(string[] args)
+        {
+            Customer c2 = new Customer();
+            Customer c1 = new Customer(801, "Arun", "kumar", "arun@gmail.com", "8753689701", "167 Mogappair east");
+            c1.DisplayCustomerInfo();
+
+            c2.SetCustomerID(802);
+            c2.SetFirstName("Sathish");
+            c2.SetLastName("Kumar");
+            c2.SetemailAddress("sat@gmail.com");
+            c2.SetPhonenumber("9326909212");
+            c2.SetAddress("187 Aynambakkam");
+
+            c2.GetCustomerID();
+            c2.GetFirstName();
+            c2.GetLastName();
+            c2.GetemailAddress();
+            c2.GetPhonenumber();
+            c2.GetAddress();
+            c2.DisplayCustomerInfo();
+
+
+            Account ac = new Account("13001645", "Savings", 85000);
+            ac.DisplayAccountInfo();
+            ac.deposit(3000);
+            ac.withdraw(10000);
+            ac.calculate_interest();
+            ac.DisplayAccountInfo();
+
+
+            
+            //Display menu for user to create object for account class by calling
+            //parameter constructor.Menu should display options
+            //`SavingsAccount` and `CurrentAccount`.
+            //user can choose any one option to create account.use switch case for implementation.
+
+        Console.WriteLine("Enter the account type ");
+            string acc = Console.ReadLine();
+        Account account = null;
+
+            switch (acc)
+            {
+                case "s":
+                    Console.WriteLine("Enter Account num");
+                    string accountnumber = Console.ReadLine();
+
+
+        account = new SavingsAccount(accountnumber, "Savings", 0);
+
+                    break;
+                case "c":
+
+                    Console.WriteLine("Enter Account num");
+                    string accountnum = Console.ReadLine();
+
+        account = new CurrentAccount(accountnum, "Current", 0);
+
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Operation");
+                    break;
+            }
+
+
+
+            while (true) {
+                Console.WriteLine("Enter " +
+                "1. Deposit" + " 2.Withdraw" + "3.Calculate intrest" + "4. Show balance"+"5.Exit");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("Enter Amount to deposit");
+                    float depositamt = float.Parse(Console.ReadLine());
+    account.deposit(depositamt);
+                    break;
+
+                case 2:
+                    Console.WriteLine("Enter Amount to withdraw");
+                    float withdrawamt = float.Parse(Console.ReadLine());
+    account.withdraw(withdrawamt);
+                    break;
+
+                case 3:
+
+                        account.calculate_interest();
+                        break;
+
+                 case 4:
+                        account.DisplayAccountInfo();
+                        break;
+
+
+            }
+
+if (choice == 5)
+{
+    break;
+}
+
+        }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+====================================================================================================
+
+using Banking_System;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Net.NetworkInformation;
+using System.Security.Policy;
+using System.Security.Principal;
+using System.Xml.Linq;
+namespace _System
+{
+//    Task 9: Abstraction
+//1. Create an abstract class BankAccount that represents a generic bank account.It should include the following attributes and methods:
+//
+//Attributes:
+//o Account number.
+//    o Customer name.
+//o Balance.
+//
+//Constructors:
+//o Implement default constructors and overload the constructor with Account attributes, generate getter and setter, print all information of attribute methods for the attributes.
+//
+//Abstract methods:
+//o deposit(amount: float): Deposit the specified amount into the account.
+//o withdraw(amount: float): Withdraw the specified amount from the account(implement error handling for insufficient funds).
+//o calculate_interest(): Abstract method for calculating interest
+    public abstract class BankAccount
+    {
+        public string AccountNumber;
+        public string CustomerName;
+        public float Balance;
+
+        public BankAccount()
+        {
+
+        }
+        public BankAccount(string accountnumber, string customername, float accountbalance)
+        {
+            AccountNumber = accountnumber;
+            CustomerName = customername;
+            Balance = accountbalance;
+        }
+        public void SetAccountNumber(string accountnumber)
+        {
+            AccountNumber = accountnumber;
+        }
+        public void SetCustomerName(string customername)
+        {
+            CustomerName = customername;
+
+        }
+        public void SetBalance(float balance)
+        {
+            Balance = balance;
+        }
+
+        public string GetAccountNumber()
+        {
+            return AccountNumber;
+        }
+        public string GetCustomerName()
+        {
+            return CustomerName;
+
+        }
+        public float GetBalance()
+        {
+            return Balance;
+        }
+
+        public void DisplayAccountInfo()
+        {
+            Console.WriteLine("Displaying Account Details");
+            Console.WriteLine("Account Number: " + AccountNumber);
+            Console.WriteLine("Customer Name: " + CustomerName);
+            Console.WriteLine("Account Balance: " + Balance);
+
+
+        }
+        public abstract void deposit(float amount);
+        public abstract void withdraw(float amount);
+        public abstract void calculate_intrest();
+    }
+
+//    2. Create two concrete classes that inherit from BankAccount:
+//
+//SavingsAccount: A savings account that includes an additional attribute for interest rate.Implement the calculate_interest() method to calculate interest based on the balance and interest rate.
+//
+//CurrentAccount: A current account with no interest. Implement the withdraw() method to allow overdraft up to a certain limit (configure a constant for the overdraft limit).
+    public  class SavingsAccount : BankAccount
+    {
+        float intrestRate = 0.6f;
+
+        public SavingsAccount(string accountnumber, string customername, float balance)
+        {
+            AccountNumber = accountnumber;
+            CustomerName = customername;
+            Balance = balance;
+        }
+        public override void calculate_intrest()
+        {
+            float intrest = intrestRate * Balance;
+            Console.WriteLine("Interest:" + intrest);
+           Balance += intrest;
+        }
+        public override void deposit(float amount)
+        {
+            Balance += amount;
+        }
+        public override void withdraw(float amount)
+        {
+            if (amount > Balance)
+            {
+                Console.WriteLine("Insufficient Balance");
+            }
+            else
+            {
+                Balance -= amount;
+            }
+
+        }
+
+    }
+    public  class CurrentAccount : BankAccount
+    {
+        float overdraftLimit = 2000;
+        public CurrentAccount(string accountnumber, string customername, float balance)
+        {
+            AccountNumber = accountnumber;
+            CustomerName = customername;
+            Balance = balance;
+        }
+        public override void withdraw(float amount)
+        {
+            if (Balance - amount > -overdraftLimit)
+            {
+                Balance -= amount;
+            }
+        }
+        public override void deposit(float amount)
+        {
+            Balance += amount;
+        }
+
+       
+        public override void calculate_intrest()
+        {
+            Console.WriteLine("Not availabele for Current Account");
+        }
+    }
+    class Bank
+  {
+//        3. Create a Bank class to represent the banking system.Perform the following operation in main method:
+//
+//Display menu for user to create object for account class by calling parameter constructor.Menu should display options `SavingsAccount` and `CurrentAccount`. user can choose any one option to create account.use switch case for implementation.create_account should display sub menu to choose type of accounts.
+//o Hint: Account acc = new SavingsAccount(); or Account acc = new CurrentAccount();
+//
+//deposit(amount: float) : Deposit the specified amount into the account.
+//
+//withdraw(amount: float) : Withdraw the specified amount from the account.For saving account withdraw amount only if there is sufficient fund else display insufficient balance.For Current Account withdraw limit can exceed the available balance and should not exceed the overdraft limit.
+        static void Main(String[] args)
+        {
+            Console.WriteLine("Enter the account type_ ");
+            string acc = Console.ReadLine();
+            BankAccount account = null;
+
+            switch (acc)
+            {
+                case "s":
+                    Console.WriteLine("Enter Account num");
+                    string accountnumber = Console.ReadLine();
+
+
+                    account = new SavingsAccount(accountnumber, "Savings", 0);
+
+                    break;
+                case "c":
+
+                    Console.WriteLine("Enter Account num");
+                    string accountnum = Console.ReadLine();
+
+                    account = new CurrentAccount(accountnum, "Current", 0);
+
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid Operation");
+                    break;
+            }
+
+
+
+            while (true)
+            {
+                Console.WriteLine("Enter " +
+                "1. Deposit" + " 2.Withdraw" + "3.Calculate intrest" + "4. Show balance" + "5.Exit");
+                int choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter Amount to deposit");
+                        float depositamt = float.Parse(Console.ReadLine());
+                        account.deposit(depositamt);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Enter Amount to withdraw");
+                        float withdrawamt = float.Parse(Console.ReadLine());
+                        account.withdraw(withdrawamt);
+                        break;
+
+                    case 3:
+
+                        account.calculate_intrest();
+                        break;
+
+                    case 4:
+                        account.DisplayAccountInfo();
+                        break;
+
+
+                }
+
+                if (choice == 5)
+                {
+                    break;
+                }
+
+            }
+            Console.ReadLine(); 
+        }
+    }
+}
+
